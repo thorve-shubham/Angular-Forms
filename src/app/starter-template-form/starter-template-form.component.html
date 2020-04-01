@@ -1,0 +1,21 @@
+<h1>Cutomer Edit</h1>
+<form #starterForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" class="form-control" id="firstName" [(ngModel)]="firstName" #fName="ngModel" required>
+        <br>
+        <div class="alert alert-danger" [hidden]="fName.valid">
+                First Name is invalid
+        </div>
+        <br>
+        <button type="submit" class="btn btn-light" [disabled]="!starterForm.valid">Submit</button><br>
+        <br /><br />
+        {{ message }}
+        <br />
+        Valid: {{ fName.valid}}
+        <br />
+        Pristine: {{ fName.pristine }}
+        <br />
+        Touched: {{ fName.touched }}
+        </div>
+</form>

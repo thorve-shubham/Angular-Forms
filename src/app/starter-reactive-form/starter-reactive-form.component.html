@@ -1,0 +1,15 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <input type="text" class="form-control" formControlName="fName">
+    <br />
+    <span *ngIf="myForm.controls.fName.invalid">First Name is required!</span>
+    <br />
+    <button class="btn btn-light" [disabled]="myForm.invalid">Submit</button>
+    <br />
+    {{ message }}
+    <br />
+    Valid: {{ myForm.valid}}
+    <br />
+    Pristine: {{ myForm.pristine }}
+    <br />
+    Touched: {{ myForm.touched }}
+</form>

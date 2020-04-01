@@ -1,0 +1,42 @@
+<div *ngIf = "!submitted else donesubmit">
+    <form #templateForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control" id="name" [(ngModel)]="hero.name" #name="ngModel" required>
+            <br>
+            <div class="alert alert-danger" [hidden]="name.valid">
+                Name is invalid
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ego">Ego</label>
+            <input type="text" name="ego" class="form-control" id="ego" [(ngModel)]="hero.ego" #ego="ngModel" required>
+            <br>
+            <div class="alert alert-danger" [hidden]="ego.valid">
+                Ego is invalid
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="power">Power</label>
+            <select name="power" class="form-control" #power="ngModel" [(ngModel)]="hero.power" required>
+                <option *ngFor="let p of powers" [value]="p">{{ p }}</option>
+            </select>
+            <br>
+            <div class="alert alert-danger" [hidden]="power.valid">
+                Power is invalid
+            </div>
+        </div>
+        <button type="submit" class="btn btn-light">Submit</button>
+    </form>
+</div>
+
+<ng-template #donesubmit>
+    <h3>
+        You Submitted...
+    </h3><br>
+    <h3>Name : </h3><p>{{ hero.name }}</p><br>
+
+    <h3>Ego : </h3><p>{{ hero.ego }}</p><br>
+
+    <h3>Power : </h3><p>{{ hero.power }}</p><br>
+</ng-template>
